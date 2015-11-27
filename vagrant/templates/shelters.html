@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="{{url_for('newshelter')">Make New Shelter!</a>
+<br>
+{% for shelter in shelters%}
+<br>
+<strong>{{shelter.name}}</strong>
+<br>
+{{shelter.id}}
+<br>
+{{shelter.website}}
+<br>
+{%endfor%}
+
+</body>
+</html>

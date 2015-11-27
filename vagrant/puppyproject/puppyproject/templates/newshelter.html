@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>New Shelter</h1>
+<form action = "{{url_for('newshelter')}}" method = 'post'>
+    <p>Name:</p>
+        <input type = 'text' size = '30' name = 'name'>
+    <p>Maximum Occupancy:</p>
+        <input type = 'number' size = '30' name = 'maximum_occupancy'>
+       <input type="submit" value="Create">
+</form>
+
+</body>
+</html>

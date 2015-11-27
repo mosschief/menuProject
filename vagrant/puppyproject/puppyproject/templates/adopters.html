@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Adopters</h1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong>{{ message }}</strong></li>
+        {% endfor %}
+            </ul>
+    {% endif %}
+            {% endwith %}
+<a href="{{url_for('newadopter')}}">Add New Adopter!</a>
+<br>
+{% for adopter in adopters%}
+<br>
+<strong>{{adopter.name}}</strong>
+
+<a href="{{url_for('deleteadopter',adopter_id=adopter.id)}}">Delete</a>
+<a href="{{url_for('adoptbyAdopter',adopter_id=adopter.id)}}">Adopt</a>
+<a href="{{url_for('adoptersPuppies',adopter_id=adopter.id)}}">View puppies</a>
+
+<br>
+{%endfor%}
+
+</body>
+</html>

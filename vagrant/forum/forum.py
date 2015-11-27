@@ -9,13 +9,14 @@ import forumdb
 import cgi
 from wsgiref.simple_server import make_server
 from wsgiref import util
+import bleach
 
 # HTML template for the forum page
 HTML_WRAP = '''\
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DB Forum</title>
+    <title>SEAM's FORUM</title>
     <style>
       h1, form { text-align: center; }
       textarea { width: 400px; height: 100px; }
@@ -27,10 +28,10 @@ HTML_WRAP = '''\
     </style>
   </head>
   <body>
-    <h1>DB Forum</h1>
+    <h1>SEAM's FORUM</h1>
     <form method=post action="/post">
       <div><textarea id="content" name="content"></textarea></div>
-      <div><button id="go" type="submit">Post message</button></div>
+      <div><button id="go" type="submit">TALK TO SEAM</button></div>
     </form>
     <!-- post content will go here -->
 %s
@@ -51,6 +52,7 @@ def View(env, resp):
     '''
     # get posts from database
     posts = forumdb.GetAllPosts()
+
     # send results
     headers = [('Content-type', 'text/html')]
     resp('200 OK', headers)
@@ -71,6 +73,7 @@ def Post(env, resp):
         postdata = input.read(length)
         fields = cgi.parse_qs(postdata)
         content = fields['content'][0]
+        content = bleach.clean(content)
         # If the post is just whitespace, don't save it.
         content = content.strip()
         if content:

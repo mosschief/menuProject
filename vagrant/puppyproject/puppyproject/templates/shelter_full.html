@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Sorry, shelter {{shelter_id}} is full!</h1>
+<br>
+<h3>Would you like to check your puppy into shelter {{open_id}} instead?</h3>
+<form action = "{{url_for('checkin', shelter_id=open_id)}}" >
+
+    <input type="submit" value="Yes">
+    </form>
+
+<form action = "{{url_for('listshelters')}}">
+
+    <input type="submit" value="No">
+</form>
+
+</form>
+</body>
+</html>
